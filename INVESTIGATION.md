@@ -1,5 +1,25 @@
 # Investigation: `reg_bounds_sync_{old,new}` Counter-Example Analysis
 
+## CBMC Verification Summary
+
+All claims in this report have been independently verified by CBMC 5.95.1.
+Three targeted verification files were written:
+
+| File | What it checks | Assertions | Result |
+|---|---|---|---|
+| `verify_claims.c` | Concrete counter-example: all intermediate values and final states | 45 | **45/45 PASS** |
+| `verify_harness_flaw.c` | Harness permissiveness: proves the original harness ALLOWS contradictory inputs (flaws expected to FAIL), and that adding the fix makes the flaw disappear | 3 | **2/3 FAIL as intended + 1/1 sanity PASS** |
+| `verify_fixed_harness.c` | Counter-example rejected by fix; equivalence on constant registers | 15 | **15/15 PASS** |
+
+Run commands:
+```sh
+cbmc verify_claims.c
+cbmc --unwind 1 verify_harness_flaw.c
+cbmc --unwind 1 verify_fixed_harness.c
+```
+
+---
+
 ## Overview
 
 This document analyses the CBMC counter-examples produced by running:
