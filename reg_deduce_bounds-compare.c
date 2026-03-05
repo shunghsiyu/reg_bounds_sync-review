@@ -841,6 +841,27 @@ static bool valid_bpf_reg_state(struct bpf_reg_state *reg)
 	ret &= reg->umax_value >= (u64)reg->u32_min_value;
 	ret &= (s64)reg->smin_value <= (s64)reg->s32_max_value;
 	ret &= (s64)reg->smax_value >= (s64)reg->s32_min_value;
+	/* tnum well-formedness: no bit is simultaneously known and unknown */
+	ret &= (reg->var_off.value & reg->var_off.mask) == 0;
+	/* u64 bounds must be consistent with tnum:
+	 *   minimum concrete value = known-1 bits = var_off.value (when well-formed)
+	 *   maximum concrete value = known-1 bits | unknown bits  = value | mask
+	 */
+	ret &= reg->umin_value >= reg->var_off.value;
+	ret &= reg->umax_value <= (reg->var_off.value | reg->var_off.mask);
+	/* s64 bounds: the sign bit contributes S64_MIN, so the tnum-implied
+	 * signed minimum sets the sign bit if it is unknown (worst case negative),
+	 * and the tnum-implied signed maximum clears the sign bit if it is unknown
+	 * (worst case positive).
+	 */
+	ret &= reg->smin_value >= (s64)(reg->var_off.value | (reg->var_off.mask & (u64)S64_MIN));
+	ret &= reg->smax_value <= (s64)(reg->var_off.value | (reg->var_off.mask & (u64)S64_MAX));
+	/* u32 subregister bounds must be consistent with the low-32 bits of tnum */
+	ret &= reg->u32_min_value >= (u32)reg->var_off.value;
+	ret &= reg->u32_max_value <= (u32)(reg->var_off.value | reg->var_off.mask);
+	/* s32 subregister bounds: same sign-bit logic as s64 but within 32 bits */
+	ret &= reg->s32_min_value >= (s32)((u32)reg->var_off.value | ((u32)reg->var_off.mask & (u32)S32_MIN));
+	ret &= reg->s32_max_value <= (s32)((u32)reg->var_off.value | ((u32)reg->var_off.mask & (u32)S32_MAX));
 	return ret;
 }
 
@@ -856,6 +877,8 @@ static bool val_in_reg(struct bpf_reg_state *reg, u64 val)
 	ret &= (u32)val <= reg->u32_max_value;
 	ret &= reg->s32_min_value <= (s32)val;
 	ret &= (s32)val <= reg->s32_max_value;
+	/* val must satisfy the tnum pattern: known bits of val must match var_off */
+	ret &= (val & ~reg->var_off.mask) == reg->var_off.value;
 	return ret;
 }
 
