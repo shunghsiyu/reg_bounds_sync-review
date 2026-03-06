@@ -356,19 +356,19 @@ static void __reg64_deduce_bounds(struct bpf_reg_state *reg)
 
 static void __reg_deduce_mixed_bounds_old(struct bpf_reg_state *reg)
 {
-	u64 new_umin, new_umax;
-	s64 new_smin, new_smax;
+	u64 new_umin_old, new_umax_old;
+	s64 new_smin_old, new_smax_old;
 
 	/* u32 -> u64 tightening */
-	new_umin = (reg->umin_value & ~0xffffffffULL) | reg->u32_min_value;
-	new_umax = (reg->umax_value & ~0xffffffffULL) | reg->u32_max_value;
-	reg->umin_value = max_t(u64, reg->umin_value, new_umin);
-	reg->umax_value = min_t(u64, reg->umax_value, new_umax);
+	new_umin_old = (reg->umin_value & ~0xffffffffULL) | reg->u32_min_value;
+	new_umax_old = (reg->umax_value & ~0xffffffffULL) | reg->u32_max_value;
+	reg->umin_value = max_t(u64, reg->umin_value, new_umin_old);
+	reg->umax_value = min_t(u64, reg->umax_value, new_umax_old);
 	/* u32 -> s64 tightening */
-	new_smin = (reg->smin_value & ~0xffffffffULL) | reg->u32_min_value;
-	new_smax = (reg->smax_value & ~0xffffffffULL) | reg->u32_max_value;
-	reg->smin_value = max_t(s64, reg->smin_value, new_smin);
-	reg->smax_value = min_t(s64, reg->smax_value, new_smax);
+	new_smin_old = (reg->smin_value & ~0xffffffffULL) | reg->u32_min_value;
+	new_smax_old = (reg->smax_value & ~0xffffffffULL) | reg->u32_max_value;
+	reg->smin_value = max_t(s64, reg->smin_value, new_smin_old);
+	reg->smax_value = min_t(s64, reg->smax_value, new_smax_old);
 
 	/* Sign-extend special case: s32 is non-negative and fits in s32 range */
 	if (reg->s32_min_value >= 0 && reg->smin_value >= S32_MIN &&
@@ -385,8 +385,8 @@ static void __reg_deduce_mixed_bounds_old(struct bpf_reg_state *reg)
 
 static void __reg_deduce_mixed_bounds_new(struct bpf_reg_state *reg)
 {
-	u64 new_umin, new_umax;
-	s64 new_smin, new_smax;
+	u64 new_umin_new, new_umax_new;
+	s64 new_smin_new, new_smax_new;
 
 	/* 64 → 32 deductions (moved from old __reg32_deduce_bounds) */
 	if ((reg->umin_value >> 32) == (reg->umax_value >> 32)) {
@@ -419,14 +419,14 @@ static void __reg_deduce_mixed_bounds_new(struct bpf_reg_state *reg)
 	}
 
 	/* 32 → 64 tightening (same as old __reg_deduce_mixed_bounds) */
-	new_umin = (reg->umin_value & ~0xffffffffULL) | reg->u32_min_value;
-	new_umax = (reg->umax_value & ~0xffffffffULL) | reg->u32_max_value;
-	reg->umin_value = max_t(u64, reg->umin_value, new_umin);
-	reg->umax_value = min_t(u64, reg->umax_value, new_umax);
-	new_smin = (reg->smin_value & ~0xffffffffULL) | reg->u32_min_value;
-	new_smax = (reg->smax_value & ~0xffffffffULL) | reg->u32_max_value;
-	reg->smin_value = max_t(s64, reg->smin_value, new_smin);
-	reg->smax_value = min_t(s64, reg->smax_value, new_smax);
+	new_umin_new = (reg->umin_value & ~0xffffffffULL) | reg->u32_min_value;
+	new_umax_new = (reg->umax_value & ~0xffffffffULL) | reg->u32_max_value;
+	reg->umin_value = max_t(u64, reg->umin_value, new_umin_new);
+	reg->umax_value = min_t(u64, reg->umax_value, new_umax_new);
+	new_smin_new = (reg->smin_value & ~0xffffffffULL) | reg->u32_min_value;
+	new_smax_new = (reg->smax_value & ~0xffffffffULL) | reg->u32_max_value;
+	reg->smin_value = max_t(s64, reg->smin_value, new_smin_new);
+	reg->smax_value = min_t(s64, reg->smax_value, new_smax_new);
 
 	/* Sign-extend special case (same condition, but smax already widened by
 	 * __reg64_deduce_bounds before this function is called) */
