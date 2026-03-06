@@ -1,10 +1,10 @@
-/* reg_deduce_bounds-compare.c
+/* reg_bounds_sync-compare.c
  *
  * Main equivalence harness: checks whether reg_bounds_sync_old and
  * reg_bounds_sync_new produce identical results for all valid inputs.
  *
  * Run with:
- *   cbmc --compact-trace reg_deduce_bounds-compare.c
+ *   cbmc --compact-trace reg_bounds_sync-compare.c
  *
  * All ten assertions fail → the two implementations diverge on valid inputs.
  */

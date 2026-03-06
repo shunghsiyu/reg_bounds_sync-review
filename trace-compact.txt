@@ -15,7 +15,7 @@ SAT checker: instance is SATISFIABLE
 Building error trace
 
 ** Results:
-./reg_deduce_bounds-compare.c function main
+./reg_bounds_sync-compare.c function main
 [main.assertion.1] line 46 assertion new_reg.var_off.value == old_reg.var_off.value: FAILURE
 [main.assertion.2] line 47 assertion new_reg.var_off.mask == old_reg.var_off.mask: FAILURE
 [main.assertion.3] line 48 assertion new_reg.umin_value == old_reg.umin_value: FAILURE
@@ -29,9 +29,9 @@ Building error trace
 
 Trace for main.assertion.1:
 
-↳ ./reg_deduce_bounds-compare.c:21 main()
+↳ ./reg_bounds_sync-compare.c:21 main()
 
-↳ ./reg_deduce_bounds-compare.c:29 __bpf_reg_state_input()
+↳ ./reg_bounds_sync-compare.c:29 __bpf_reg_state_input()
   511: return_value_nondet_unsigned_long_long_input=0ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
   511: reg.var_off.value=0ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
   512: return_value_nondet_unsigned_long_long_input$0=2305843009213693984ul (00100000 00000000 00000000 00000000 00000000 00000000 00000000 00100000)
@@ -86,7 +86,7 @@ Trace for main.assertion.1:
   30: return_value_nondet_unsigned_long_long_input=32ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00100000)
   30: x=32ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00100000)
 
-↳ ./reg_deduce_bounds-compare.c:31 valid_bpf_reg_state(&reg!0@1)
+↳ ./reg_bounds_sync-compare.c:31 valid_bpf_reg_state(&reg!0@1)
   537: ret=TRUE (00000001)
   540: ret=TRUE (00000001)
   541: ret=TRUE (00000001)
@@ -110,7 +110,7 @@ Trace for main.assertion.1:
 ↵
   31: return_value_valid_bpf_reg_state=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:32 val_in_reg(&reg!0@1, 32ul)
+↳ ./reg_bounds_sync-compare.c:32 val_in_reg(&reg!0@1, 32ul)
   585: ret=TRUE (00000001)
   587: ret=TRUE (00000001)
   588: ret=TRUE (00000001)
@@ -130,7 +130,7 @@ Trace for main.assertion.1:
 ↵
   32: return_value_val_in_reg=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:35 popcount64(2305843009213693984ul)
+↳ ./reg_bounds_sync-compare.c:35 popcount64(2305843009213693984ul)
   15: x=1152921504606846992ul (00010000 00000000 00000000 00000000 00000000 00000000 00000000 00010000)
   16: x=1152921504606846992ul (00010000 00000000 00000000 00000000 00000000 00000000 00000000 00010000)
   17: x=72057594037927937ul (00000001 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
@@ -158,7 +158,7 @@ Trace for main.assertion.1:
   40: new_reg.u32_min_value=0u (00000000 00000000 00000000 00000000)
   40: new_reg.u32_max_value=32u (00000000 00000000 00000000 00100000)
 
-↳ ./reg_deduce_bounds-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
 
 ↳ ./bpf_reg.h:473 __update_reg_bounds(&old_reg!0@1)
 
@@ -644,7 +644,7 @@ Trace for main.assertion.1:
 ↵
 ↵
 
-↳ ./reg_deduce_bounds-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
 
 ↳ ./bpf_reg.h:483 __update_reg_bounds(&new_reg!0@1)
 
@@ -984,7 +984,7 @@ Trace for main.assertion.1:
 ↵
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 46 thread 0
+  file ./reg_bounds_sync-compare.c function main line 46 thread 0
   assertion new_reg.var_off.value == old_reg.var_off.value
   new_reg.var_off.value == old_reg.var_off.value
 
@@ -992,9 +992,9 @@ Violated property:
 
 Trace for main.assertion.2:
 
-↳ ./reg_deduce_bounds-compare.c:21 main()
+↳ ./reg_bounds_sync-compare.c:21 main()
 
-↳ ./reg_deduce_bounds-compare.c:29 __bpf_reg_state_input()
+↳ ./reg_bounds_sync-compare.c:29 __bpf_reg_state_input()
   511: return_value_nondet_unsigned_long_long_input=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
   511: reg.var_off.value=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
   512: return_value_nondet_unsigned_long_long_input$0=9223372036854775809ul (10000000 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
@@ -1049,7 +1049,7 @@ Trace for main.assertion.2:
   30: return_value_nondet_unsigned_long_long_input=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
   30: x=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
 
-↳ ./reg_deduce_bounds-compare.c:31 valid_bpf_reg_state(&reg!0@1)
+↳ ./reg_bounds_sync-compare.c:31 valid_bpf_reg_state(&reg!0@1)
   537: ret=TRUE (00000001)
   540: ret=TRUE (00000001)
   541: ret=TRUE (00000001)
@@ -1073,7 +1073,7 @@ Trace for main.assertion.2:
 ↵
   31: return_value_valid_bpf_reg_state=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:32 val_in_reg(&reg!0@1, 2ul)
+↳ ./reg_bounds_sync-compare.c:32 val_in_reg(&reg!0@1, 2ul)
   585: ret=TRUE (00000001)
   587: ret=TRUE (00000001)
   588: ret=TRUE (00000001)
@@ -1093,7 +1093,7 @@ Trace for main.assertion.2:
 ↵
   32: return_value_val_in_reg=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:35 popcount64(9223372036854775809ul)
+↳ ./reg_bounds_sync-compare.c:35 popcount64(9223372036854775809ul)
   15: x=4611686018427387905ul (01000000 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
   16: x=1152921504606846977ul (00010000 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
   17: x=72057594037927937ul (00000001 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
@@ -1121,7 +1121,7 @@ Trace for main.assertion.2:
   40: new_reg.u32_min_value=2u (00000000 00000000 00000000 00000010)
   40: new_reg.u32_max_value=3u (00000000 00000000 00000000 00000011)
 
-↳ ./reg_deduce_bounds-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
 
 ↳ ./bpf_reg.h:473 __update_reg_bounds(&old_reg!0@1)
 
@@ -1622,7 +1622,7 @@ Trace for main.assertion.2:
 ↵
 ↵
 
-↳ ./reg_deduce_bounds-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
 
 ↳ ./bpf_reg.h:483 __update_reg_bounds(&new_reg!0@1)
 
@@ -1962,7 +1962,7 @@ Trace for main.assertion.2:
 ↵
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 47 thread 0
+  file ./reg_bounds_sync-compare.c function main line 47 thread 0
   assertion new_reg.var_off.mask == old_reg.var_off.mask
   new_reg.var_off.mask == old_reg.var_off.mask
 
@@ -1970,9 +1970,9 @@ Violated property:
 
 Trace for main.assertion.3:
 
-↳ ./reg_deduce_bounds-compare.c:21 main()
+↳ ./reg_bounds_sync-compare.c:21 main()
 
-↳ ./reg_deduce_bounds-compare.c:29 __bpf_reg_state_input()
+↳ ./reg_bounds_sync-compare.c:29 __bpf_reg_state_input()
   511: return_value_nondet_unsigned_long_long_input=0ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
   511: reg.var_off.value=0ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
   512: return_value_nondet_unsigned_long_long_input$0=2305843009213693984ul (00100000 00000000 00000000 00000000 00000000 00000000 00000000 00100000)
@@ -2027,7 +2027,7 @@ Trace for main.assertion.3:
   30: return_value_nondet_unsigned_long_long_input=32ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00100000)
   30: x=32ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00100000)
 
-↳ ./reg_deduce_bounds-compare.c:31 valid_bpf_reg_state(&reg!0@1)
+↳ ./reg_bounds_sync-compare.c:31 valid_bpf_reg_state(&reg!0@1)
   537: ret=TRUE (00000001)
   540: ret=TRUE (00000001)
   541: ret=TRUE (00000001)
@@ -2051,7 +2051,7 @@ Trace for main.assertion.3:
 ↵
   31: return_value_valid_bpf_reg_state=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:32 val_in_reg(&reg!0@1, 32ul)
+↳ ./reg_bounds_sync-compare.c:32 val_in_reg(&reg!0@1, 32ul)
   585: ret=TRUE (00000001)
   587: ret=TRUE (00000001)
   588: ret=TRUE (00000001)
@@ -2071,7 +2071,7 @@ Trace for main.assertion.3:
 ↵
   32: return_value_val_in_reg=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:35 popcount64(2305843009213693984ul)
+↳ ./reg_bounds_sync-compare.c:35 popcount64(2305843009213693984ul)
   15: x=1152921504606846992ul (00010000 00000000 00000000 00000000 00000000 00000000 00000000 00010000)
   16: x=1152921504606846992ul (00010000 00000000 00000000 00000000 00000000 00000000 00000000 00010000)
   17: x=72057594037927937ul (00000001 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
@@ -2099,7 +2099,7 @@ Trace for main.assertion.3:
   40: new_reg.u32_min_value=0u (00000000 00000000 00000000 00000000)
   40: new_reg.u32_max_value=32u (00000000 00000000 00000000 00100000)
 
-↳ ./reg_deduce_bounds-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
 
 ↳ ./bpf_reg.h:473 __update_reg_bounds(&old_reg!0@1)
 
@@ -2585,7 +2585,7 @@ Trace for main.assertion.3:
 ↵
 ↵
 
-↳ ./reg_deduce_bounds-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
 
 ↳ ./bpf_reg.h:483 __update_reg_bounds(&new_reg!0@1)
 
@@ -2925,19 +2925,19 @@ Trace for main.assertion.3:
 ↵
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 46 thread 0
+  file ./reg_bounds_sync-compare.c function main line 46 thread 0
   assertion new_reg.var_off.value == old_reg.var_off.value
   new_reg.var_off.value == old_reg.var_off.value
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 47 thread 0
+  file ./reg_bounds_sync-compare.c function main line 47 thread 0
   assertion new_reg.var_off.mask == old_reg.var_off.mask
   new_reg.var_off.mask == old_reg.var_off.mask
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 48 thread 0
+  file ./reg_bounds_sync-compare.c function main line 48 thread 0
   assertion new_reg.umin_value == old_reg.umin_value
   new_reg.umin_value == old_reg.umin_value
 
@@ -2945,9 +2945,9 @@ Violated property:
 
 Trace for main.assertion.4:
 
-↳ ./reg_deduce_bounds-compare.c:21 main()
+↳ ./reg_bounds_sync-compare.c:21 main()
 
-↳ ./reg_deduce_bounds-compare.c:29 __bpf_reg_state_input()
+↳ ./reg_bounds_sync-compare.c:29 __bpf_reg_state_input()
   511: return_value_nondet_unsigned_long_long_input=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
   511: reg.var_off.value=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
   512: return_value_nondet_unsigned_long_long_input$0=9223372036854775809ul (10000000 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
@@ -3002,7 +3002,7 @@ Trace for main.assertion.4:
   30: return_value_nondet_unsigned_long_long_input=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
   30: x=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
 
-↳ ./reg_deduce_bounds-compare.c:31 valid_bpf_reg_state(&reg!0@1)
+↳ ./reg_bounds_sync-compare.c:31 valid_bpf_reg_state(&reg!0@1)
   537: ret=TRUE (00000001)
   540: ret=TRUE (00000001)
   541: ret=TRUE (00000001)
@@ -3026,7 +3026,7 @@ Trace for main.assertion.4:
 ↵
   31: return_value_valid_bpf_reg_state=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:32 val_in_reg(&reg!0@1, 2ul)
+↳ ./reg_bounds_sync-compare.c:32 val_in_reg(&reg!0@1, 2ul)
   585: ret=TRUE (00000001)
   587: ret=TRUE (00000001)
   588: ret=TRUE (00000001)
@@ -3046,7 +3046,7 @@ Trace for main.assertion.4:
 ↵
   32: return_value_val_in_reg=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:35 popcount64(9223372036854775809ul)
+↳ ./reg_bounds_sync-compare.c:35 popcount64(9223372036854775809ul)
   15: x=4611686018427387905ul (01000000 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
   16: x=1152921504606846977ul (00010000 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
   17: x=72057594037927937ul (00000001 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
@@ -3074,7 +3074,7 @@ Trace for main.assertion.4:
   40: new_reg.u32_min_value=2u (00000000 00000000 00000000 00000010)
   40: new_reg.u32_max_value=3u (00000000 00000000 00000000 00000011)
 
-↳ ./reg_deduce_bounds-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
 
 ↳ ./bpf_reg.h:473 __update_reg_bounds(&old_reg!0@1)
 
@@ -3575,7 +3575,7 @@ Trace for main.assertion.4:
 ↵
 ↵
 
-↳ ./reg_deduce_bounds-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
 
 ↳ ./bpf_reg.h:483 __update_reg_bounds(&new_reg!0@1)
 
@@ -3915,13 +3915,13 @@ Trace for main.assertion.4:
 ↵
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 47 thread 0
+  file ./reg_bounds_sync-compare.c function main line 47 thread 0
   assertion new_reg.var_off.mask == old_reg.var_off.mask
   new_reg.var_off.mask == old_reg.var_off.mask
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 49 thread 0
+  file ./reg_bounds_sync-compare.c function main line 49 thread 0
   assertion new_reg.umax_value == old_reg.umax_value
   new_reg.umax_value == old_reg.umax_value
 
@@ -3929,9 +3929,9 @@ Violated property:
 
 Trace for main.assertion.5:
 
-↳ ./reg_deduce_bounds-compare.c:21 main()
+↳ ./reg_bounds_sync-compare.c:21 main()
 
-↳ ./reg_deduce_bounds-compare.c:29 __bpf_reg_state_input()
+↳ ./reg_bounds_sync-compare.c:29 __bpf_reg_state_input()
   511: return_value_nondet_unsigned_long_long_input=0ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
   511: reg.var_off.value=0ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
   512: return_value_nondet_unsigned_long_long_input$0=2305843009213693984ul (00100000 00000000 00000000 00000000 00000000 00000000 00000000 00100000)
@@ -3986,7 +3986,7 @@ Trace for main.assertion.5:
   30: return_value_nondet_unsigned_long_long_input=32ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00100000)
   30: x=32ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00100000)
 
-↳ ./reg_deduce_bounds-compare.c:31 valid_bpf_reg_state(&reg!0@1)
+↳ ./reg_bounds_sync-compare.c:31 valid_bpf_reg_state(&reg!0@1)
   537: ret=TRUE (00000001)
   540: ret=TRUE (00000001)
   541: ret=TRUE (00000001)
@@ -4010,7 +4010,7 @@ Trace for main.assertion.5:
 ↵
   31: return_value_valid_bpf_reg_state=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:32 val_in_reg(&reg!0@1, 32ul)
+↳ ./reg_bounds_sync-compare.c:32 val_in_reg(&reg!0@1, 32ul)
   585: ret=TRUE (00000001)
   587: ret=TRUE (00000001)
   588: ret=TRUE (00000001)
@@ -4030,7 +4030,7 @@ Trace for main.assertion.5:
 ↵
   32: return_value_val_in_reg=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:35 popcount64(2305843009213693984ul)
+↳ ./reg_bounds_sync-compare.c:35 popcount64(2305843009213693984ul)
   15: x=1152921504606846992ul (00010000 00000000 00000000 00000000 00000000 00000000 00000000 00010000)
   16: x=1152921504606846992ul (00010000 00000000 00000000 00000000 00000000 00000000 00000000 00010000)
   17: x=72057594037927937ul (00000001 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
@@ -4058,7 +4058,7 @@ Trace for main.assertion.5:
   40: new_reg.u32_min_value=0u (00000000 00000000 00000000 00000000)
   40: new_reg.u32_max_value=32u (00000000 00000000 00000000 00100000)
 
-↳ ./reg_deduce_bounds-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
 
 ↳ ./bpf_reg.h:473 __update_reg_bounds(&old_reg!0@1)
 
@@ -4544,7 +4544,7 @@ Trace for main.assertion.5:
 ↵
 ↵
 
-↳ ./reg_deduce_bounds-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
 
 ↳ ./bpf_reg.h:483 __update_reg_bounds(&new_reg!0@1)
 
@@ -4884,25 +4884,25 @@ Trace for main.assertion.5:
 ↵
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 46 thread 0
+  file ./reg_bounds_sync-compare.c function main line 46 thread 0
   assertion new_reg.var_off.value == old_reg.var_off.value
   new_reg.var_off.value == old_reg.var_off.value
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 47 thread 0
+  file ./reg_bounds_sync-compare.c function main line 47 thread 0
   assertion new_reg.var_off.mask == old_reg.var_off.mask
   new_reg.var_off.mask == old_reg.var_off.mask
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 48 thread 0
+  file ./reg_bounds_sync-compare.c function main line 48 thread 0
   assertion new_reg.umin_value == old_reg.umin_value
   new_reg.umin_value == old_reg.umin_value
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 50 thread 0
+  file ./reg_bounds_sync-compare.c function main line 50 thread 0
   assertion new_reg.smin_value == old_reg.smin_value
   new_reg.smin_value == old_reg.smin_value
 
@@ -4910,9 +4910,9 @@ Violated property:
 
 Trace for main.assertion.6:
 
-↳ ./reg_deduce_bounds-compare.c:21 main()
+↳ ./reg_bounds_sync-compare.c:21 main()
 
-↳ ./reg_deduce_bounds-compare.c:29 __bpf_reg_state_input()
+↳ ./reg_bounds_sync-compare.c:29 __bpf_reg_state_input()
   511: return_value_nondet_unsigned_long_long_input=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
   511: reg.var_off.value=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
   512: return_value_nondet_unsigned_long_long_input$0=9223372036854775809ul (10000000 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
@@ -4967,7 +4967,7 @@ Trace for main.assertion.6:
   30: return_value_nondet_unsigned_long_long_input=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
   30: x=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
 
-↳ ./reg_deduce_bounds-compare.c:31 valid_bpf_reg_state(&reg!0@1)
+↳ ./reg_bounds_sync-compare.c:31 valid_bpf_reg_state(&reg!0@1)
   537: ret=TRUE (00000001)
   540: ret=TRUE (00000001)
   541: ret=TRUE (00000001)
@@ -4991,7 +4991,7 @@ Trace for main.assertion.6:
 ↵
   31: return_value_valid_bpf_reg_state=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:32 val_in_reg(&reg!0@1, 2ul)
+↳ ./reg_bounds_sync-compare.c:32 val_in_reg(&reg!0@1, 2ul)
   585: ret=TRUE (00000001)
   587: ret=TRUE (00000001)
   588: ret=TRUE (00000001)
@@ -5011,7 +5011,7 @@ Trace for main.assertion.6:
 ↵
   32: return_value_val_in_reg=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:35 popcount64(9223372036854775809ul)
+↳ ./reg_bounds_sync-compare.c:35 popcount64(9223372036854775809ul)
   15: x=4611686018427387905ul (01000000 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
   16: x=1152921504606846977ul (00010000 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
   17: x=72057594037927937ul (00000001 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
@@ -5039,7 +5039,7 @@ Trace for main.assertion.6:
   40: new_reg.u32_min_value=2u (00000000 00000000 00000000 00000010)
   40: new_reg.u32_max_value=3u (00000000 00000000 00000000 00000011)
 
-↳ ./reg_deduce_bounds-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
 
 ↳ ./bpf_reg.h:473 __update_reg_bounds(&old_reg!0@1)
 
@@ -5540,7 +5540,7 @@ Trace for main.assertion.6:
 ↵
 ↵
 
-↳ ./reg_deduce_bounds-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
 
 ↳ ./bpf_reg.h:483 __update_reg_bounds(&new_reg!0@1)
 
@@ -5880,19 +5880,19 @@ Trace for main.assertion.6:
 ↵
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 47 thread 0
+  file ./reg_bounds_sync-compare.c function main line 47 thread 0
   assertion new_reg.var_off.mask == old_reg.var_off.mask
   new_reg.var_off.mask == old_reg.var_off.mask
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 49 thread 0
+  file ./reg_bounds_sync-compare.c function main line 49 thread 0
   assertion new_reg.umax_value == old_reg.umax_value
   new_reg.umax_value == old_reg.umax_value
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 51 thread 0
+  file ./reg_bounds_sync-compare.c function main line 51 thread 0
   assertion new_reg.smax_value == old_reg.smax_value
   new_reg.smax_value == old_reg.smax_value
 
@@ -5900,9 +5900,9 @@ Violated property:
 
 Trace for main.assertion.7:
 
-↳ ./reg_deduce_bounds-compare.c:21 main()
+↳ ./reg_bounds_sync-compare.c:21 main()
 
-↳ ./reg_deduce_bounds-compare.c:29 __bpf_reg_state_input()
+↳ ./reg_bounds_sync-compare.c:29 __bpf_reg_state_input()
   511: return_value_nondet_unsigned_long_long_input=0ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
   511: reg.var_off.value=0ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
   512: return_value_nondet_unsigned_long_long_input$0=2305843009213693984ul (00100000 00000000 00000000 00000000 00000000 00000000 00000000 00100000)
@@ -5957,7 +5957,7 @@ Trace for main.assertion.7:
   30: return_value_nondet_unsigned_long_long_input=32ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00100000)
   30: x=32ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00100000)
 
-↳ ./reg_deduce_bounds-compare.c:31 valid_bpf_reg_state(&reg!0@1)
+↳ ./reg_bounds_sync-compare.c:31 valid_bpf_reg_state(&reg!0@1)
   537: ret=TRUE (00000001)
   540: ret=TRUE (00000001)
   541: ret=TRUE (00000001)
@@ -5981,7 +5981,7 @@ Trace for main.assertion.7:
 ↵
   31: return_value_valid_bpf_reg_state=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:32 val_in_reg(&reg!0@1, 32ul)
+↳ ./reg_bounds_sync-compare.c:32 val_in_reg(&reg!0@1, 32ul)
   585: ret=TRUE (00000001)
   587: ret=TRUE (00000001)
   588: ret=TRUE (00000001)
@@ -6001,7 +6001,7 @@ Trace for main.assertion.7:
 ↵
   32: return_value_val_in_reg=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:35 popcount64(2305843009213693984ul)
+↳ ./reg_bounds_sync-compare.c:35 popcount64(2305843009213693984ul)
   15: x=1152921504606846992ul (00010000 00000000 00000000 00000000 00000000 00000000 00000000 00010000)
   16: x=1152921504606846992ul (00010000 00000000 00000000 00000000 00000000 00000000 00000000 00010000)
   17: x=72057594037927937ul (00000001 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
@@ -6029,7 +6029,7 @@ Trace for main.assertion.7:
   40: new_reg.u32_min_value=0u (00000000 00000000 00000000 00000000)
   40: new_reg.u32_max_value=32u (00000000 00000000 00000000 00100000)
 
-↳ ./reg_deduce_bounds-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
 
 ↳ ./bpf_reg.h:473 __update_reg_bounds(&old_reg!0@1)
 
@@ -6515,7 +6515,7 @@ Trace for main.assertion.7:
 ↵
 ↵
 
-↳ ./reg_deduce_bounds-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
 
 ↳ ./bpf_reg.h:483 __update_reg_bounds(&new_reg!0@1)
 
@@ -6855,31 +6855,31 @@ Trace for main.assertion.7:
 ↵
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 46 thread 0
+  file ./reg_bounds_sync-compare.c function main line 46 thread 0
   assertion new_reg.var_off.value == old_reg.var_off.value
   new_reg.var_off.value == old_reg.var_off.value
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 47 thread 0
+  file ./reg_bounds_sync-compare.c function main line 47 thread 0
   assertion new_reg.var_off.mask == old_reg.var_off.mask
   new_reg.var_off.mask == old_reg.var_off.mask
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 48 thread 0
+  file ./reg_bounds_sync-compare.c function main line 48 thread 0
   assertion new_reg.umin_value == old_reg.umin_value
   new_reg.umin_value == old_reg.umin_value
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 50 thread 0
+  file ./reg_bounds_sync-compare.c function main line 50 thread 0
   assertion new_reg.smin_value == old_reg.smin_value
   new_reg.smin_value == old_reg.smin_value
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 52 thread 0
+  file ./reg_bounds_sync-compare.c function main line 52 thread 0
   assertion new_reg.u32_min_value == old_reg.u32_min_value
   new_reg.u32_min_value == old_reg.u32_min_value
 
@@ -6887,9 +6887,9 @@ Violated property:
 
 Trace for main.assertion.8:
 
-↳ ./reg_deduce_bounds-compare.c:21 main()
+↳ ./reg_bounds_sync-compare.c:21 main()
 
-↳ ./reg_deduce_bounds-compare.c:29 __bpf_reg_state_input()
+↳ ./reg_bounds_sync-compare.c:29 __bpf_reg_state_input()
   511: return_value_nondet_unsigned_long_long_input=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
   511: reg.var_off.value=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
   512: return_value_nondet_unsigned_long_long_input$0=9223372036854775809ul (10000000 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
@@ -6944,7 +6944,7 @@ Trace for main.assertion.8:
   30: return_value_nondet_unsigned_long_long_input=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
   30: x=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
 
-↳ ./reg_deduce_bounds-compare.c:31 valid_bpf_reg_state(&reg!0@1)
+↳ ./reg_bounds_sync-compare.c:31 valid_bpf_reg_state(&reg!0@1)
   537: ret=TRUE (00000001)
   540: ret=TRUE (00000001)
   541: ret=TRUE (00000001)
@@ -6968,7 +6968,7 @@ Trace for main.assertion.8:
 ↵
   31: return_value_valid_bpf_reg_state=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:32 val_in_reg(&reg!0@1, 2ul)
+↳ ./reg_bounds_sync-compare.c:32 val_in_reg(&reg!0@1, 2ul)
   585: ret=TRUE (00000001)
   587: ret=TRUE (00000001)
   588: ret=TRUE (00000001)
@@ -6988,7 +6988,7 @@ Trace for main.assertion.8:
 ↵
   32: return_value_val_in_reg=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:35 popcount64(9223372036854775809ul)
+↳ ./reg_bounds_sync-compare.c:35 popcount64(9223372036854775809ul)
   15: x=4611686018427387905ul (01000000 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
   16: x=1152921504606846977ul (00010000 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
   17: x=72057594037927937ul (00000001 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
@@ -7016,7 +7016,7 @@ Trace for main.assertion.8:
   40: new_reg.u32_min_value=2u (00000000 00000000 00000000 00000010)
   40: new_reg.u32_max_value=3u (00000000 00000000 00000000 00000011)
 
-↳ ./reg_deduce_bounds-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
 
 ↳ ./bpf_reg.h:473 __update_reg_bounds(&old_reg!0@1)
 
@@ -7517,7 +7517,7 @@ Trace for main.assertion.8:
 ↵
 ↵
 
-↳ ./reg_deduce_bounds-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
 
 ↳ ./bpf_reg.h:483 __update_reg_bounds(&new_reg!0@1)
 
@@ -7857,25 +7857,25 @@ Trace for main.assertion.8:
 ↵
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 47 thread 0
+  file ./reg_bounds_sync-compare.c function main line 47 thread 0
   assertion new_reg.var_off.mask == old_reg.var_off.mask
   new_reg.var_off.mask == old_reg.var_off.mask
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 49 thread 0
+  file ./reg_bounds_sync-compare.c function main line 49 thread 0
   assertion new_reg.umax_value == old_reg.umax_value
   new_reg.umax_value == old_reg.umax_value
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 51 thread 0
+  file ./reg_bounds_sync-compare.c function main line 51 thread 0
   assertion new_reg.smax_value == old_reg.smax_value
   new_reg.smax_value == old_reg.smax_value
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 53 thread 0
+  file ./reg_bounds_sync-compare.c function main line 53 thread 0
   assertion new_reg.u32_max_value == old_reg.u32_max_value
   new_reg.u32_max_value == old_reg.u32_max_value
 
@@ -7883,9 +7883,9 @@ Violated property:
 
 Trace for main.assertion.9:
 
-↳ ./reg_deduce_bounds-compare.c:21 main()
+↳ ./reg_bounds_sync-compare.c:21 main()
 
-↳ ./reg_deduce_bounds-compare.c:29 __bpf_reg_state_input()
+↳ ./reg_bounds_sync-compare.c:29 __bpf_reg_state_input()
   511: return_value_nondet_unsigned_long_long_input=0ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
   511: reg.var_off.value=0ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000)
   512: return_value_nondet_unsigned_long_long_input$0=2305843009213693984ul (00100000 00000000 00000000 00000000 00000000 00000000 00000000 00100000)
@@ -7940,7 +7940,7 @@ Trace for main.assertion.9:
   30: return_value_nondet_unsigned_long_long_input=32ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00100000)
   30: x=32ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00100000)
 
-↳ ./reg_deduce_bounds-compare.c:31 valid_bpf_reg_state(&reg!0@1)
+↳ ./reg_bounds_sync-compare.c:31 valid_bpf_reg_state(&reg!0@1)
   537: ret=TRUE (00000001)
   540: ret=TRUE (00000001)
   541: ret=TRUE (00000001)
@@ -7964,7 +7964,7 @@ Trace for main.assertion.9:
 ↵
   31: return_value_valid_bpf_reg_state=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:32 val_in_reg(&reg!0@1, 32ul)
+↳ ./reg_bounds_sync-compare.c:32 val_in_reg(&reg!0@1, 32ul)
   585: ret=TRUE (00000001)
   587: ret=TRUE (00000001)
   588: ret=TRUE (00000001)
@@ -7984,7 +7984,7 @@ Trace for main.assertion.9:
 ↵
   32: return_value_val_in_reg=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:35 popcount64(2305843009213693984ul)
+↳ ./reg_bounds_sync-compare.c:35 popcount64(2305843009213693984ul)
   15: x=1152921504606846992ul (00010000 00000000 00000000 00000000 00000000 00000000 00000000 00010000)
   16: x=1152921504606846992ul (00010000 00000000 00000000 00000000 00000000 00000000 00000000 00010000)
   17: x=72057594037927937ul (00000001 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
@@ -8012,7 +8012,7 @@ Trace for main.assertion.9:
   40: new_reg.u32_min_value=0u (00000000 00000000 00000000 00000000)
   40: new_reg.u32_max_value=32u (00000000 00000000 00000000 00100000)
 
-↳ ./reg_deduce_bounds-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
 
 ↳ ./bpf_reg.h:473 __update_reg_bounds(&old_reg!0@1)
 
@@ -8498,7 +8498,7 @@ Trace for main.assertion.9:
 ↵
 ↵
 
-↳ ./reg_deduce_bounds-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
 
 ↳ ./bpf_reg.h:483 __update_reg_bounds(&new_reg!0@1)
 
@@ -8838,37 +8838,37 @@ Trace for main.assertion.9:
 ↵
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 46 thread 0
+  file ./reg_bounds_sync-compare.c function main line 46 thread 0
   assertion new_reg.var_off.value == old_reg.var_off.value
   new_reg.var_off.value == old_reg.var_off.value
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 47 thread 0
+  file ./reg_bounds_sync-compare.c function main line 47 thread 0
   assertion new_reg.var_off.mask == old_reg.var_off.mask
   new_reg.var_off.mask == old_reg.var_off.mask
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 48 thread 0
+  file ./reg_bounds_sync-compare.c function main line 48 thread 0
   assertion new_reg.umin_value == old_reg.umin_value
   new_reg.umin_value == old_reg.umin_value
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 50 thread 0
+  file ./reg_bounds_sync-compare.c function main line 50 thread 0
   assertion new_reg.smin_value == old_reg.smin_value
   new_reg.smin_value == old_reg.smin_value
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 52 thread 0
+  file ./reg_bounds_sync-compare.c function main line 52 thread 0
   assertion new_reg.u32_min_value == old_reg.u32_min_value
   new_reg.u32_min_value == old_reg.u32_min_value
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 54 thread 0
+  file ./reg_bounds_sync-compare.c function main line 54 thread 0
   assertion new_reg.s32_min_value == old_reg.s32_min_value
   new_reg.s32_min_value == old_reg.s32_min_value
 
@@ -8876,9 +8876,9 @@ Violated property:
 
 Trace for main.assertion.10:
 
-↳ ./reg_deduce_bounds-compare.c:21 main()
+↳ ./reg_bounds_sync-compare.c:21 main()
 
-↳ ./reg_deduce_bounds-compare.c:29 __bpf_reg_state_input()
+↳ ./reg_bounds_sync-compare.c:29 __bpf_reg_state_input()
   511: return_value_nondet_unsigned_long_long_input=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
   511: reg.var_off.value=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
   512: return_value_nondet_unsigned_long_long_input$0=9223372036854775809ul (10000000 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
@@ -8933,7 +8933,7 @@ Trace for main.assertion.10:
   30: return_value_nondet_unsigned_long_long_input=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
   30: x=2ul (00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000010)
 
-↳ ./reg_deduce_bounds-compare.c:31 valid_bpf_reg_state(&reg!0@1)
+↳ ./reg_bounds_sync-compare.c:31 valid_bpf_reg_state(&reg!0@1)
   537: ret=TRUE (00000001)
   540: ret=TRUE (00000001)
   541: ret=TRUE (00000001)
@@ -8957,7 +8957,7 @@ Trace for main.assertion.10:
 ↵
   31: return_value_valid_bpf_reg_state=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:32 val_in_reg(&reg!0@1, 2ul)
+↳ ./reg_bounds_sync-compare.c:32 val_in_reg(&reg!0@1, 2ul)
   585: ret=TRUE (00000001)
   587: ret=TRUE (00000001)
   588: ret=TRUE (00000001)
@@ -8977,7 +8977,7 @@ Trace for main.assertion.10:
 ↵
   32: return_value_val_in_reg=TRUE (00000001)
 
-↳ ./reg_deduce_bounds-compare.c:35 popcount64(9223372036854775809ul)
+↳ ./reg_bounds_sync-compare.c:35 popcount64(9223372036854775809ul)
   15: x=4611686018427387905ul (01000000 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
   16: x=1152921504606846977ul (00010000 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
   17: x=72057594037927937ul (00000001 00000000 00000000 00000000 00000000 00000000 00000000 00000001)
@@ -9005,7 +9005,7 @@ Trace for main.assertion.10:
   40: new_reg.u32_min_value=2u (00000000 00000000 00000000 00000010)
   40: new_reg.u32_max_value=3u (00000000 00000000 00000000 00000011)
 
-↳ ./reg_deduce_bounds-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:42 reg_bounds_sync_old(&old_reg!0@1)
 
 ↳ ./bpf_reg.h:473 __update_reg_bounds(&old_reg!0@1)
 
@@ -9506,7 +9506,7 @@ Trace for main.assertion.10:
 ↵
 ↵
 
-↳ ./reg_deduce_bounds-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
+↳ ./reg_bounds_sync-compare.c:43 reg_bounds_sync_new(&new_reg!0@1)
 
 ↳ ./bpf_reg.h:483 __update_reg_bounds(&new_reg!0@1)
 
@@ -9846,31 +9846,31 @@ Trace for main.assertion.10:
 ↵
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 47 thread 0
+  file ./reg_bounds_sync-compare.c function main line 47 thread 0
   assertion new_reg.var_off.mask == old_reg.var_off.mask
   new_reg.var_off.mask == old_reg.var_off.mask
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 49 thread 0
+  file ./reg_bounds_sync-compare.c function main line 49 thread 0
   assertion new_reg.umax_value == old_reg.umax_value
   new_reg.umax_value == old_reg.umax_value
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 51 thread 0
+  file ./reg_bounds_sync-compare.c function main line 51 thread 0
   assertion new_reg.smax_value == old_reg.smax_value
   new_reg.smax_value == old_reg.smax_value
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 53 thread 0
+  file ./reg_bounds_sync-compare.c function main line 53 thread 0
   assertion new_reg.u32_max_value == old_reg.u32_max_value
   new_reg.u32_max_value == old_reg.u32_max_value
 
 
 Violated property:
-  file ./reg_deduce_bounds-compare.c function main line 55 thread 0
+  file ./reg_bounds_sync-compare.c function main line 55 thread 0
   assertion new_reg.s32_max_value == old_reg.s32_max_value
   new_reg.s32_max_value == old_reg.s32_max_value
 
