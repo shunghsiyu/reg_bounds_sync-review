@@ -531,6 +531,8 @@ static bool val_matches_tnum(struct tnum t, u64 val)
 
 /* Returns true iff reg is an internally consistent bpf_reg_state.
  * Checks all range invariants AND tnum consistency.
+ *
+ * Note: I have no idea if this is correct.
  */
 static bool valid_bpf_reg_state(struct bpf_reg_state *reg)
 {

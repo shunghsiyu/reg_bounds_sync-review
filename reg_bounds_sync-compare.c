@@ -30,6 +30,8 @@ void main(void)
 	u64 x = nondet_unsigned_long_long_input();
 	__CPROVER_assume(valid_bpf_reg_state(&reg));
 	__CPROVER_assume(val_in_reg(&reg, x));
+	/* Adding additional constraint so the counter example is easier to
+	 * understand */
 	__CPROVER_assume(x <= 32);
 	__CPROVER_assume(reg.umax_value <= 32);
 	__CPROVER_assume(popcount64(reg.var_off.mask) <= 2);
